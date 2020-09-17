@@ -127,3 +127,9 @@ main ul {
   padding: 2%;
   margin-left: 60%;
 }
+
+main .contact-name {
+  padding: 2%;
+  background-color: #252525;
+  margin-top: 1%;
+}
