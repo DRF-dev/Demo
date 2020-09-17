@@ -133,3 +133,36 @@ main .contact-name {
   background-color: #252525;
   margin-top: 1%;
 }
+
+.form, header {
+  margin: 2%;
+}
+
+.form input {
+  width: 80%;
+  height: 50px;
+  border-radius: 15px;
+  color: white !important;
+  padding-left: 2%;
+  outline: none;
+  border: none;
+}
+
+.form input::placeholder {
+  color: white !important;
+  opacity: .2;
+}
+
+.form button {
+  height: 50px;
+  width: 150px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+}
+
+.form button:hover {
+  color: white;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
