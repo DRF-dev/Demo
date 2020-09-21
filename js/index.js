@@ -32,9 +32,6 @@ const newMessage = () => {
   newMessage.appendChild(hour)
   messageZone.appendChild(newMessage)
 
-  element = document.getElementById('messages');
-  element.scrollTop = element.scrollHeight;
-
   input.value = ""
 
   return actualValue
@@ -71,4 +68,6 @@ form.addEventListener('submit', (e) => {
     notifBotForHour.textContent = numberNotifBotHour
   }
 
+  element = document.getElementById('messages');
+  element.scrollTop = element.scrollHeight;
 })
