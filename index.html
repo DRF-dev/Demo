@@ -37,7 +37,7 @@
     <div class="contact-name">
       <h1>contact-name</h1>
     </div>
-    <ul>
+    <ul id="messages">
       <div class="user-infos">
         <li class="user">Message 1</li>
         <span class="date-message">06/02/2019 12h34</span>
@@ -56,61 +56,9 @@
         <li class="user">Message 4</li>
         <span class="date-message">06/02/2019 12h43</span>
       </div>
-      <div class="user-infos">
-        <li class="user">Message 5</li>
-        <span class="date-message">06/02/2019 12h43</span>
-      </div>
-      <div class="user-infos">
-        <li class="user">Message 6</li>
-        <span class="date-message">06/02/2019 12h44</span>
-      </div>
-      <div class="bot-infos">
-        <span class="name">contact-name</span>
-        <li class="bot">Message 7</li>
-        <span class="date-message">06/02/2019 12h44</span>
-      </div>
-      <div class="user-infos">
-        <li class="user">Message 8</li>
-        <span class="date-message">06/02/2019 12h45</span>
-      </div>
-      <div class="user-infos">
-        <li class="user">Message 9</li>
-        <span class="date-message">06/02/2019 12h47</span>
-      </div>
-      <div class="bot-infos">
-        <span class="name">contact-name</span>
-        <li class="bot">Message 10</li>
-        <span class="date-message">06/02/2019 12h48</span>
-      </div>
-      <div class="user-infos">
-        <li class="user">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta rerum eveniet beatae reiciendis
-          aliquid iste atque fugit. Distinctio error aliquid expedita, reprehenderit ipsum incidunt eveniet id
-          perferendis
-          commodi ullam aperiam.</li>
-        <span class="date-message">06/02/2019 12h49</span>
-      </div>
-      <div class="bot-infos">
-        <span class="name">contact-name</span>
-        <li class="bot">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio velit corporis
-          iusto! Reiciendis dolore praesentium odio quibusdam. Quasi qui inventore minus numquam iste repellat voluptas
-          incidunt eius quaerat recusandae.</li>
-        <span class="date-message">06/02/2019 12h49</span>
-      </div>
-      <div class="user-infos">
-        <li class="user">Lorem, ipsum dolor.</li>
-        <span class="date-message">06/02/2019 12h50</span>
-      </div>
-      <div class="user-infos">
-        <li class="user">Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-        <span class="date-message">06/02/2019 12h50</span>
-      </div>
-      <div class="user-infos">
-        <li class="user">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repellat voluptas dolorum?</li>
-        <span class="date-message">06/02/2019 13h46</span>
-      </div>
     </ul>
-    <form action="/index.html" class="form">
-      <input type="text" name="message" placeholder="Ecrivez votre message" />
+    <form method="POST" action="/" class="form" id="form">
+      <input type="text" name="message" placeholder="Ecrivez votre message" value="" id="message_input" />
       <button type="submit">Envoyer</button>
     </form>
   </main>
