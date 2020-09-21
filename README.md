@@ -9,11 +9,15 @@ An app which have a bot who can answers our questions.
 ```bash
 .
 ├── assets
-│   └── img_DRF.png
+│   └── Photo_CV.jpg
 ├── css
 │   ├── index.css
 │   └── reset.css
-└── index.html
+├── index.html
+├── js
+│   └── index.js
+└── README.md
+
 ```
 ### Components
  * Navbar
