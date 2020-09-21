@@ -2,10 +2,17 @@ const form = document.getElementById('form')
 const input = document.getElementById('message_input')
 const messageZone = document.getElementById('messages')
 
-const newMessage = (e) => {
-  e.preventDefault()
+const date = new Date()
+const getHour = date.getHours()
+const getMinute = date.getMinutes()
+const getDay = date.getDate()
+const getMonth = date.getMonth()
+const getYear = date.getFullYear()
+
+const rgxVerifyHour = /hour/
+
+const newMessage = () => {
   const actualValue = input.value
-  const date = new Date()
   if(!actualValue) return
 
   let newMessage = document.createElement('div')
@@ -17,7 +24,7 @@ const newMessage = (e) => {
 
   let hour = document.createElement('span')
   hour.className = "date-message"
-  hour.textContent = `${date.getDate()< 10? `0${date.getDate()}`:date.getDate()}/${date.getMonth() < 9? `0${date.getMonth()+1}`:date.getMonth()+1}/${date.getFullYear()} ${date.getHours()}h${date.getMinutes() < 10? `0${date.getMinutes()}`:date.getMinutes()}`
+  hour.textContent = `${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear} ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`
 
   newMessage.appendChild(content)
   newMessage.appendChild(hour)
@@ -27,8 +34,36 @@ const newMessage = (e) => {
   element.scrollTop = element.scrollHeight;
 
   input.value = ""
+
+  return actualValue
 }
 
 form.addEventListener('submit', (e) => {
-  newMessage(e)
+  e.preventDefault()
+  const newActValue = newMessage(e)
+
+  if (rgxVerifyHour.test(newActValue)) {
+  
+    let responseHour = document.createElement('div')
+    responseHour.className = "bot-infos"
+
+    let botName = document.createElement('span')
+    botName.className = "name"
+    botName.textContent = "bot for hour"
+
+    let botMsg = document.createElement('li')
+    botMsg.className = "bot"
+    botMsg.textContent = (`Il est ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`)
+
+    let botMoment = document.createElement('span')
+    botMoment.className = "date-message"
+    botMoment.textContent = `${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear} ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`
+
+    responseHour.appendChild(botName)
+    responseHour.appendChild(botMsg)
+    responseHour.appendChild(botMoment)
+
+    messageZone.appendChild(responseHour)
+  }
+
 })
