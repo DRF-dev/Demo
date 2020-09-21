@@ -22,5 +22,8 @@ form.addEventListener('submit', (e) => {
   newMessage.appendChild(hour)
   messageZone.appendChild(newMessage)
 
+  element = document.getElementById('messages');
+  element.scrollTop = element.scrollHeight;
+
   input.value = ""
 })
