@@ -9,8 +9,11 @@ const getDay = date.getDate()
 const getMonth = date.getMonth()
 const getYear = date.getFullYear()
 
-const notifBotForHour = document.getElementsByClassName('number_of_notif')[0]
-let numberNotifBotHour = 0;
+const notifBot = document.getElementsByClassName('number_of_notif')
+let numberNotif = {
+  hour: 0,
+  date: 0
+}
 
 const rgxVerifyHour = /hour/
 const rgxVerifyDate = {
@@ -42,13 +45,13 @@ const newMessage = () => {
   return actualValue
 }
 
-const bodyMessageForBot = (message) => {
+const bodyMessageForBot = (message, name) => {
   let responseHour = document.createElement('div')
   responseHour.className = "bot-infos"
 
   let botName = document.createElement('span')
   botName.className = "name"
-  botName.textContent = "botForHour"
+  botName.textContent = (name).toString()
 
   let botMsg = document.createElement('li')
   botMsg.className = "bot"
@@ -70,13 +73,13 @@ form.addEventListener('submit', (e) => {
   const inputValue = newMessage(e)
 
   if (rgxVerifyHour.test(inputValue)) {
-    bodyMessageForBot(`It is ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`)
-    numberNotifBotHour++
-    notifBotForHour.textContent = numberNotifBotHour
+    bodyMessageForBot(`It is ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`, "botForHour")
+    numberNotif.hour++
+    notifBot[0].textContent = numberNotif.hour
   } else if(rgxVerifyDate.date.test(inputValue) || rgxVerifyDate.day.test(inputValue)) {
-    bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`)
-    numberNotifBotHour++
-    notifBotForHour.textContent = numberNotifBotHour
+    bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForHour")
+    numberNotif.date++
+    notifBot[1].textContent = numberNotif.date
   }
 
   element = document.getElementById('messages');
