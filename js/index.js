@@ -1,6 +1,7 @@
 const form = document.getElementById('form')
 const input = document.getElementById('message_input')
 const messageZone = document.getElementById('messages')
+const notifBotForHour = document.getElementsByClassName('number_of_notif')[0]
 
 const date = new Date()
 const getHour = date.getHours()
@@ -10,10 +11,11 @@ const getMonth = date.getMonth()
 const getYear = date.getFullYear()
 
 const rgxVerifyHour = /hour/
+let numberNotifBotHour = 0;
 
 const newMessage = () => {
   const actualValue = input.value
-  if(!actualValue) return
+  if (!actualValue) return
 
   let newMessage = document.createElement('div')
   newMessage.className = "user-infos"
@@ -43,17 +45,17 @@ form.addEventListener('submit', (e) => {
   const newActValue = newMessage(e)
 
   if (rgxVerifyHour.test(newActValue)) {
-  
+
     let responseHour = document.createElement('div')
     responseHour.className = "bot-infos"
 
     let botName = document.createElement('span')
     botName.className = "name"
-    botName.textContent = "bot for hour"
+    botName.textContent = "botForHour"
 
     let botMsg = document.createElement('li')
     botMsg.className = "bot"
-    botMsg.textContent = (`Il est ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`)
+    botMsg.textContent = (`Il est ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`).toString()
 
     let botMoment = document.createElement('span')
     botMoment.className = "date-message"
@@ -64,6 +66,9 @@ form.addEventListener('submit', (e) => {
     responseHour.appendChild(botMoment)
 
     messageZone.appendChild(responseHour)
+
+    numberNotifBotHour++
+    notifBotForHour.textContent = numberNotifBotHour
   }
 
 })
