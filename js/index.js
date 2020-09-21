@@ -1,6 +1,6 @@
-const form = document.getElementById('form')
-const input = document.getElementById('message_input')
-const messageZone = document.getElementById('messages')
+const form = document.getElementsByTagName('form')[0]
+const input = document.getElementsByTagName('input')[0]
+const messageZone = document.getElementsByTagName('ul')[1]
 
 const date = new Date()
 const getHour = date.getHours()
@@ -76,12 +76,12 @@ form.addEventListener('submit', (e) => {
     bodyMessageForBot(`It is ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`, "botForHour")
     numberNotif.hour++
     notifBot[0].textContent = numberNotif.hour
-  } else if(rgxVerifyDate.date.test(inputValue) || rgxVerifyDate.day.test(inputValue)) {
+  } 
+  if(rgxVerifyDate.date.test(inputValue) || rgxVerifyDate.day.test(inputValue)) {
     bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForHour")
     numberNotif.date++
     notifBot[1].textContent = numberNotif.date
   }
 
-  element = document.getElementById('messages');
-  element.scrollTop = element.scrollHeight;
+  messageZone.scrollTop = messageZone.scrollHeight;
 })
