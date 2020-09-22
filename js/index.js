@@ -19,12 +19,12 @@ let numberNotif = {
 }
 
 const rgxVerify = {
-  hour: /hour/,
-  date: /date/,
-  day: /day/,
-  weather: /weather/,
-  dice: /dice/,
-  citation: /citation/
+  hour: /\b(hour)\b/i,
+  date: /\b(date)\b/i,
+  day: /\b(day)\b/i,
+  weather: /\b(weather)\b/i,
+  dice: /\b(dice)\b/i,
+  citation: /\b(citation)\b/i
 }
 
 const newMessage = () => {
