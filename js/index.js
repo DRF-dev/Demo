@@ -12,10 +12,12 @@ const getYear = date.getFullYear()
 const notifBot = document.getElementsByClassName('number_of_notif')
 let numberNotif = {
   hour: 0,
-  date: 0
+  date: 0,
+  dice: 0
 }
 
 const rgxVerifyHour = /hour/
+const rgxVerifyDice = /dice/
 const rgxVerifyDate = {
   date: /date/,
   day: /day/
@@ -67,6 +69,9 @@ const bodyMessageForBot = (message, name) => {
 
   messageZone.appendChild(responseHour)
 }
+const rollDice = () => {
+  return Math.floor(Math.random() * 6) + 1  
+}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -78,9 +83,14 @@ form.addEventListener('submit', (e) => {
     notifBot[0].textContent = numberNotif.hour
   } 
   if(rgxVerifyDate.date.test(inputValue) || rgxVerifyDate.day.test(inputValue)) {
-    bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForHour")
+    bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForDate")
     numberNotif.date++
     notifBot[1].textContent = numberNotif.date
+  }
+  if(rgxVerifyDice.test(inputValue)) {
+    bodyMessageForBot(`The number of dice is ${rollDice()}`)
+    numberNotif.dice++
+    notifBot[2].textContent = numberNotif.dice
   }
 
   messageZone.scrollTop = messageZone.scrollHeight;
