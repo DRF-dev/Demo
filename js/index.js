@@ -133,6 +133,8 @@ form.addEventListener('submit', (e) => {
     <li> * dice to have a random number between 1 and 6</li>
     <li> * citation to have a random quote</li>
     </ul>`, "botForHelp")
+    numberNotif.citation++
+    notifBot[5].textContent = numberNotif.citation
   }
 
   messageZone.scrollTop = messageZone.scrollHeight
