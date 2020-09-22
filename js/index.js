@@ -13,14 +13,16 @@ const notifBot = document.getElementsByClassName('number_of_notif')
 let numberNotif = {
   hour: 0,
   date: 0,
-  weather: 0
+  weather: 0,
+  dice: 0
 }
 
 const rgxVerify = {
   hour: /hour/,
   date: /date/,
   day: /day/,
-  weather: /weather/
+  weather: /weather/,
+  dice: /dice/
 }
 
 const newMessage = () => {
@@ -86,6 +88,11 @@ form.addEventListener('submit', (e) => {
     bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForHour")
     numberNotif.date++
     notifBot[1].textContent = numberNotif.date
+  }
+  if(rgxVerify.dice.test(inputValue)) {
+    bodyMessageForBot("The number of dice is " + rollDice(), "botForDice")
+    numberNotif.dice++
+    notifBot[2].textContent = numberNotif.dice
   }
   if (rgxVerify.weather.test(inputValue)) {
     const arrayWeather = ['sunny', 'raining', 'foggy']
