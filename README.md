@@ -45,7 +45,7 @@ An app which have a bot who can answers our questions.
     * When you type "date" on your message, the bot respond with the date
     * When you type "weather" on your message, the bot respond with the current meteo
     * When you type "dice" on your message, the bot respond with a random number between 1 and 6
-
+    * When you type "tryMe" on your message, the bot respond with a nice surprise
 
 ### Author
 [**FRANCISCO Dany**](https://github.com/DRF-dev)
