@@ -7,7 +7,7 @@ const getHour = date.getHours()
 const getMinute = date.getMinutes()
 const getDay = date.getDate()
 const getMonth = date.getMonth()
-const getYear = date.getFullYear() 
+const getYear = date.getFullYear()
 
 const notifBot = document.getElementsByClassName('number_of_notif')
 let numberNotif = {
@@ -18,7 +18,8 @@ let numberNotif = {
   citation: 0,
   help: 0,
   tryMe: 0,
-  map: 0
+  map: 0,
+  youtube: 0
 }
 
 const rgxVerify = {
@@ -30,7 +31,8 @@ const rgxVerify = {
   citation: /\b(citation)\b/i,
   help: /\b(help)\b/i,
   tryMe: /\b(tryMe)\b/i,
-  map: /\b(map)\b/
+  map: /\b(map)\b/,
+  youtube: /\b(youtube)\b/
 }
 
 const newMessage = () => {
@@ -80,7 +82,7 @@ const bodyMessageForBot = (message, name) => {
   messageZone.appendChild(responseHour)
 }
 const rollDice = () => {
-  return Math.floor(Math.random() * 6) + 1  
+  return Math.floor(Math.random() * 6) + 1
 }
 
 const aleaNumber = (array) => {
@@ -95,11 +97,11 @@ form.addEventListener('submit', (e) => {
     bodyMessageForBot(`It is ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`, "botForHour")
     notifBot[0].textContent = ++numberNotif.hour
   }
-  if(rgxVerify.date.test(inputValue) || rgxVerify.day.test(inputValue)) {
+  if (rgxVerify.date.test(inputValue) || rgxVerify.day.test(inputValue)) {
     bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForHour")
     notifBot[1].textContent = ++numberNotif.date
   }
-  if(rgxVerify.dice.test(inputValue)) {
+  if (rgxVerify.dice.test(inputValue)) {
     bodyMessageForBot(`The number of dice is ${rollDice()}`, "botForDice")
     notifBot[2].textContent = ++numberNotif.dice
   }
@@ -131,29 +133,43 @@ form.addEventListener('submit', (e) => {
     <li> * "weather" to have a random weather</li>
     <li> * "dice" to have a random number betweedayn 1 and 6</li>
     <li> * "citation" to have a random quote</li>
-    <li> * "map <name_of_city>" to open google map with the localisation of the city</li>
+    <li> * "map {name_of_city}" to open google map with the localisation of the city</li>
+    <li> * "youtube {name_of_youtube's_search}" to open youtube with the search</li>
     <li> * "tryme" to have a surprise </li>
     </ul>`, "botForHelp")
     notifBot[5].textContent = ++numberNotif.citation
   }
   if (rgxVerify.map.test(inputValue)) {
     const city = inputValue.split(" ")[1]
-    setTimeout(()=>{
+    setTimeout(() => {
       window.open(`https://www.google.fr/maps/place/${city}`, "_blank")
     }, 750)
     bodyMessageForBot(`Google map has been open on the city : ${city}`, "botForCity")
     notifBot[6].textContent = ++numberNotif.map
   }
+  if (rgxVerify.youtube.test(inputValue)) {
+    const arrayValue = inputValue.split(" ")
+    let arrayYoutubeSearch = []
+    for (let i = 1; i < arrayValue.length; i++) {
+      arrayYoutubeSearch.push(arrayValue[i])
+    }
+    const youtubeSearch = arrayYoutubeSearch.join(" ")
+    console.log(youtubeSearch)
+    setTimeout(() => {
+      window.open(`https://www.youtube.com/results?search_query=${youtubeSearch}`, "_blank")
+    }, 750)
+    bodyMessageForBot(`A youtube search has been initialized for the term : ${youtubeSearch}`, "botForYoutube")
+    notifBot[7].textContent = ++numberNotif.youtube
+  }
   if (rgxVerify.tryMe.test(inputValue)) {
     bodyMessageForBot("You've been trolled", "botOfLife")
-    setTimeout(()=>{
+    setTimeout(() => {
       window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")
     }, 750)
-    notifBot[7].textContent = ++numberNotif.tryMe
+    notifBot[8].textContent = ++numberNotif.tryMe
   }
-
 
   messageZone.scrollTop = messageZone.scrollHeight
 })
 
-bodyMessageForBot('Hi and welcome to Chat-Bot PLOP. To see the commande please type "help". Hope you enjoy it :D' , "bot")
+bodyMessageForBot('Hi and welcome to Chat-Bot PLOP. To see the commande please type "help". Hope you enjoy it :D', "bot")
