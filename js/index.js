@@ -91,25 +91,21 @@ form.addEventListener('submit', (e) => {
 
   if (rgxVerify.hour.test(inputValue)) {
     bodyMessageForBot(`It is ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`, "botForHour")
-    numberNotif.hour++
-    notifBot[0].textContent = numberNotif.hour
+    notifBot[0].textContent = ++numberNotif.hour
   }
   if(rgxVerify.date.test(inputValue) || rgxVerify.day.test(inputValue)) {
     bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForHour")
-    numberNotif.date++
-    notifBot[1].textContent = numberNotif.date
+    notifBot[1].textContent = ++numberNotif.date
   }
   if(rgxVerify.dice.test(inputValue)) {
     bodyMessageForBot(`The number of dice is ${rollDice()}`, "botForDice")
-    numberNotif.dice++
-    notifBot[2].textContent = numberNotif.dice
+    notifBot[2].textContent = ++numberNotif.dice
   }
   if (rgxVerify.weather.test(inputValue)) {
     const arrayWeather = ['sunny', 'raining', 'foggy']
     let alea = aleaNumber(arrayWeather)
     bodyMessageForBot(`Today it is ${arrayWeather[alea]}`, "botForWeather")
-    numberNotif.weather++
-    notifBot[3].textContent = numberNotif.weather
+    notifBot[3].textContent = ++numberNotif.weather
   }
   if (rgxVerify.citation.test(inputValue)) {
     const arrayCitations = [
@@ -123,8 +119,7 @@ form.addEventListener('submit', (e) => {
     ]
     let alea = aleaNumber(arrayCitations)
     bodyMessageForBot(arrayCitations[alea], "botForCitations")
-    numberNotif.citation++
-    notifBot[4].textContent = numberNotif.citation
+    notifBot[4].textContent = ++numberNotif.citation
   }
   if (rgxVerify.help.test(inputValue)) {
     bodyMessageForBot(`<ul><p>The commands :</p>
@@ -136,16 +131,14 @@ form.addEventListener('submit', (e) => {
     <li> * "citation" to have a random quote</li>
     <li> * "tryme" to have a surprise </li>
     </ul>`, "botForHelp")
-    numberNotif.citation++
-    notifBot[5].textContent = numberNotif.citation
+    notifBot[5].textContent = ++numberNotif.citation
   }
   if (rgxVerify.tryMe.test(inputValue)) {
     bodyMessageForBot("You've been trolled", "botOfLife")
     setTimeout(()=>{
       window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")
     }, 750)
-    numberNotif.tryMe++
-    notifBot[6].textContent = numberNotif.tryMe
+    notifBot[6].textContent = ++numberNotif.tryMe
   }
 
   messageZone.scrollTop = messageZone.scrollHeight
