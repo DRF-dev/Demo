@@ -69,6 +69,9 @@ const bodyMessageForBot = (message, name) => {
 
   messageZone.appendChild(responseHour)
 }
+const rollDice = () => {
+  return Math.floor(Math.random() * 6) + 1  
+}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
