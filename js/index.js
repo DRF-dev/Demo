@@ -16,7 +16,8 @@ let numberNotif = {
   weather: 0,
   dice: 0,
   citation: 0,
-  help: 0
+  help: 0,
+  tryMe: 0
 }
 
 const rgxVerify = {
@@ -26,7 +27,8 @@ const rgxVerify = {
   weather: /\b(weather)\b/i,
   dice: /\b(dice)\b/i,
   citation: /\b(citation)\b/i,
-  help: /\b(help)\b/i
+  help: /\b(help)\b/i,
+  tryMe: /\b(tryMe)\b/i
 }
 
 const newMessage = () => {
@@ -126,15 +128,24 @@ form.addEventListener('submit', (e) => {
   }
   if (rgxVerify.help.test(inputValue)) {
     bodyMessageForBot(`<ul><p>The commands :</p>
-    <li> * help for help</li>
-    <li> * hour to have the current time</li>
-    <li> * date or day to have today's date</li>
-    <li> * weather to have a random weather</li>
-    <li> * dice to have a random number between 1 and 6</li>
-    <li> * citation to have a random quote</li>
+    <li> * "help" for help</li>
+    <li> * "hour" to have the current time</li>
+    <li> * "date" or "day" to have today's date</li>
+    <li> * "weather" to have a random weather</li>
+    <li> * "dice" to have a random number betweedayn 1 and 6</li>
+    <li> * "citation" to have a random quote</li>
+    <li> * "tryme" to have a surprise </li>
     </ul>`, "botForHelp")
     numberNotif.citation++
     notifBot[5].textContent = numberNotif.citation
+  }
+  if (rgxVerify.tryMe.test(inputValue)) {
+    bodyMessageForBot("You've been trolled", "botOfLife")
+    setTimeout(()=>{
+      window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")
+    }, 750)
+    numberNotif.tryMe++
+    notifBot[6].textContent = numberNotif.tryMe
   }
 
   messageZone.scrollTop = messageZone.scrollHeight
