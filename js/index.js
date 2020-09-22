@@ -17,7 +17,8 @@ let numberNotif = {
   dice: 0,
   citation: 0,
   help: 0,
-  tryMe: 0
+  tryMe: 0,
+  map: 0
 }
 
 const rgxVerify = {
@@ -28,7 +29,8 @@ const rgxVerify = {
   dice: /\b(dice)\b/i,
   citation: /\b(citation)\b/i,
   help: /\b(help)\b/i,
-  tryMe: /\b(tryMe)\b/i
+  tryMe: /\b(tryMe)\b/i,
+  map: /\b(map)\b/
 }
 
 const newMessage = () => {
@@ -129,17 +131,27 @@ form.addEventListener('submit', (e) => {
     <li> * "weather" to have a random weather</li>
     <li> * "dice" to have a random number betweedayn 1 and 6</li>
     <li> * "citation" to have a random quote</li>
+    <li> * "map <name_of_city>" to open google map with the localisation of the city</li>
     <li> * "tryme" to have a surprise </li>
     </ul>`, "botForHelp")
     notifBot[5].textContent = ++numberNotif.citation
+  }
+  if (rgxVerify.map.test(inputValue)) {
+    const city = inputValue.split(" ")[1]
+    setTimeout(()=>{
+      window.open(`https://www.google.fr/maps/place/${city}`, "_blank")
+    }, 750)
+    bodyMessageForBot(`Google map has been open on the city : ${city}`, "botForCity")
+    notifBot[6].textContent = ++numberNotif.map
   }
   if (rgxVerify.tryMe.test(inputValue)) {
     bodyMessageForBot("You've been trolled", "botOfLife")
     setTimeout(()=>{
       window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")
     }, 750)
-    notifBot[6].textContent = ++numberNotif.tryMe
+    notifBot[7].textContent = ++numberNotif.tryMe
   }
+
 
   messageZone.scrollTop = messageZone.scrollHeight
 })
