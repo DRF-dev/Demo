@@ -83,8 +83,6 @@ const aleaNumber = (array) => {
   return Math.floor(Math.random() * Math.floor(array.length))
 }
 
-bodyMessageForBot('Hi and welcome to Chat-Bot PLOP. To see the commande please type "help". Hope you enjoy it :D' , "bot")
-
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   const inputValue = newMessage(e)
@@ -139,3 +137,5 @@ form.addEventListener('submit', (e) => {
 
   messageZone.scrollTop = messageZone.scrollHeight
 })
+
+bodyMessageForBot('Hi and welcome to Chat-Bot PLOP. To see the commande please type "help". Hope you enjoy it :D' , "bot")
