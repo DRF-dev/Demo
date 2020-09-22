@@ -58,8 +58,8 @@ nav ul li::before,
   content: "";
   display: inline-flex;
   height: 30px;
-  width: 30px;
-  background: url("../assets/Photo_CV.jpg") no-repeat;
+  width: 50px;
+  background: url("../assets/STONKS.jpg") no-repeat;
   background-size: 100%;
   border-radius: 50px;
 }
