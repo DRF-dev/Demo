@@ -11,7 +11,8 @@ An app which have a bot who can answers our questions.
 ```bash
 .
 ├── assets
-│   └── Photo_CV.jpg
+│   ├── Photo_CV.jpg
+│   └── STONKS.jpg
 ├── css
 │   ├── index.css
 │   └── reset.css
