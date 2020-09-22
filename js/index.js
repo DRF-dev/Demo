@@ -31,8 +31,8 @@ const rgxVerify = {
   citation: /\b(citation)\b/i,
   help: /\b(help)\b/i,
   tryMe: /\b(tryMe)\b/i,
-  map: /\b(map)\b/,
-  youtube: /\b(youtube)\b/
+  map: /\b(map)\b/i,
+  youtube: /\b(youtube)\b/i
 }
 
 const newMessage = () => {
