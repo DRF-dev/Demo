@@ -12,13 +12,15 @@ const getYear = date.getFullYear()
 const notifBot = document.getElementsByClassName('number_of_notif')
 let numberNotif = {
   hour: 0,
-  date: 0
+  date: 0,
+  weather: 0
 }
 
-const rgxVerifyHour = /hour/
-const rgxVerifyDate = {
+const rgxVerify = {
+  hour: /hour/,
   date: /date/,
-  day: /day/
+  day: /day/,
+  weather: /weather/
 }
 
 const newMessage = () => {
@@ -72,16 +74,23 @@ form.addEventListener('submit', (e) => {
   e.preventDefault()
   const inputValue = newMessage(e)
 
-  if (rgxVerifyHour.test(inputValue)) {
+  if (rgxVerify.hour.test(inputValue)) {
     bodyMessageForBot(`It is ${getHour}h${getMinute < 10? `0${getMinute}`:getMinute}`, "botForHour")
     numberNotif.hour++
     notifBot[0].textContent = numberNotif.hour
-  } 
-  if(rgxVerifyDate.date.test(inputValue) || rgxVerifyDate.day.test(inputValue)) {
+  }
+  if(rgxVerify.date.test(inputValue) || rgxVerify.day.test(inputValue)) {
     bodyMessageForBot(`Today is the ${getDay < 10? `0${getDay}`:getDay}/${getMonth < 9? `0${getMonth+1}`:getMonth+1}/${getYear}`, "botForHour")
     numberNotif.date++
     notifBot[1].textContent = numberNotif.date
   }
+  if (rgxVerify.weather.test(inputValue)) {
+    const arrayWeather = ['sunny', 'raining', 'foggy']
+    const alea = Math.floor(Math.random() * Math.floor(arrayWeather.length)) //affiche un nombre entre 0 et la taille de arrayWeather
+    bodyMessageForBot(`Today it is ${arrayWeather[alea]}`, "botForWeather")
+    numberNotif.weather++
+    notifBot[3].textContent = numberNotif.weather
+  }
 
-  messageZone.scrollTop = messageZone.scrollHeight;
+  messageZone.scrollTop = messageZone.scrollHeight
 })
