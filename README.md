@@ -23,9 +23,9 @@ An app which have a bot who can answers our questions.
 ```
 ### Tech
   Technology used:
-    *HTML
-    *CSS
-    *JS
+    * HTML
+    * CSS
+    * JS
 
 ### Components
  * Navbar
@@ -48,8 +48,8 @@ An app which have a bot who can answers our questions.
     * When you type "tryMe" on your message, the bot respond with a nice surprise
 
 ### Author
-[**FRANCISCO Dany**](https://github.com/DRF-dev)
-[**BOULANOUAR Baghdadi**](https://github.com/BaghdadiBoulanouar)
-[**LAMOURI Nizar**](https://github.com/Nizi95)
+[**FRANCISCO Dany**](https://github.com/DRF-dev) \
+[**BOULANOUAR Baghdadi**](https://github.com/BaghdadiBoulanouar) \
+[**LAMOURI Nizar**](https://github.com/Nizi95) \
 [**LINA Florian**](https://github.com/Jilow42)
 

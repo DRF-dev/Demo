@@ -7,7 +7,7 @@ const getHour = date.getHours()
 const getMinute = date.getMinutes()
 const getDay = date.getDate()
 const getMonth = date.getMonth()
-const getYear = date.getFullYear()
+const getYear = date.getFullYear() 
 
 const notifBot = document.getElementsByClassName('number_of_notif')
 let numberNotif = {
@@ -15,16 +15,18 @@ let numberNotif = {
   date: 0,
   weather: 0,
   dice: 0,
-  citation: 0
+  citation: 0,
+  help: 0
 }
 
 const rgxVerify = {
-  hour: /hour/,
-  date: /date/,
-  day: /day/,
-  weather: /weather/,
-  dice: /dice/,
-  citation: /citation/
+  hour: /\b(hour)\b/i,
+  date: /\b(date)\b/i,
+  day: /\b(day)\b/i,
+  weather: /\b(weather)\b/i,
+  dice: /\b(dice)\b/i,
+  citation: /\b(citation)\b/i,
+  help: /\b(help)\b/i
 }
 
 const newMessage = () => {
@@ -61,7 +63,7 @@ const bodyMessageForBot = (message, name) => {
 
   let botMsg = document.createElement('li')
   botMsg.className = "bot"
-  botMsg.textContent = (message).toString()
+  botMsg.innerHTML = (message).toString()
 
   let botMoment = document.createElement('span')
   botMoment.className = "date-message"
@@ -80,8 +82,6 @@ const rollDice = () => {
 const aleaNumber = (array) => {
   return Math.floor(Math.random() * Math.floor(array.length))
 }
-
-bodyMessageForBot('Hi and welcome to Chat-Bot PLOP. To see the commande please type "help". Hope you enjoy it :D' , "bot")
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -124,6 +124,20 @@ form.addEventListener('submit', (e) => {
     numberNotif.citation++
     notifBot[4].textContent = numberNotif.citation
   }
+  if (rgxVerify.help.test(inputValue)) {
+    bodyMessageForBot(`<ul><p>The commands :</p>
+    <li> * help for help</li>
+    <li> * hour to have the current time</li>
+    <li> * date or day to have today's date</li>
+    <li> * weather to have a random weather</li>
+    <li> * dice to have a random number between 1 and 6</li>
+    <li> * citation to have a random quote</li>
+    </ul>`, "botForHelp")
+    numberNotif.citation++
+    notifBot[5].textContent = numberNotif.citation
+  }
 
   messageZone.scrollTop = messageZone.scrollHeight
 })
+
+bodyMessageForBot('Hi and welcome to Chat-Bot PLOP. To see the commande please type "help". Hope you enjoy it :D' , "bot")
