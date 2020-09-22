@@ -14,15 +14,17 @@ let numberNotif = {
   hour: 0,
   date: 0,
   weather: 0,
-  dice: 0
+  dice: 0,
+  citation: 0
 }
 
 const rgxVerify = {
-  hour: /hour/,
-  date: /date/,
-  day: /day/,
-  weather: /weather/,
-  dice: /dice/
+  hour: /\b(hour)\b/i,
+  date: /\b(date)\b/i,
+  day: /\b(day)\b/i,
+  weather: /\b(weather)\b/i,
+  dice: /\b(dice)\b/i,
+  citation: /\b(citation)\b/i
 }
 
 const newMessage = () => {
@@ -75,6 +77,10 @@ const rollDice = () => {
   return Math.floor(Math.random() * 6) + 1  
 }
 
+const aleaNumber = (array) => {
+  return Math.floor(Math.random() * Math.floor(array.length))
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   const inputValue = newMessage(e)
@@ -90,16 +96,31 @@ form.addEventListener('submit', (e) => {
     notifBot[1].textContent = numberNotif.date
   }
   if(rgxVerify.dice.test(inputValue)) {
-    bodyMessageForBot("The number of dice is " + rollDice(), "botForDice")
+    bodyMessageForBot(`The number of dice is ${rollDice()}`, "botForDice")
     numberNotif.dice++
     notifBot[2].textContent = numberNotif.dice
   }
   if (rgxVerify.weather.test(inputValue)) {
     const arrayWeather = ['sunny', 'raining', 'foggy']
-    const alea = Math.floor(Math.random() * Math.floor(arrayWeather.length)) //affiche un nombre entre 0 et la taille de arrayWeather
+    let alea = aleaNumber(arrayWeather)
     bodyMessageForBot(`Today it is ${arrayWeather[alea]}`, "botForWeather")
     numberNotif.weather++
     notifBot[3].textContent = numberNotif.weather
+  }
+  if (rgxVerify.citation.test(inputValue)) {
+    const arrayCitations = [
+      "Les deux principales inventions sorties de Berkeley sont UNIX et le LSD. Difficile de croire à une quelconque coïncidence — Jeremy S. Anderson",
+      "Si debugger, c’est supprimer des bugs, alors programmer ne peut être que les ajouter — Edsger Dijkstra",
+      "Un ordinateur vous permet de faire plus de bêtises, beaucoup plus rapidement, que n’importe quelle autre invention dans l’histoire de l’humanité. À l’exception notable des armes à feu et de la tequila — Mitch Ratcliffe",
+      "Vous ne pouvez pas comprendre la récursivité sans avoir d’abord compris la récursivité — Auteur Inconnu",
+      "Quelle prétention de prétendre que l'informatique est récente : Adam et Eve avaient déjà un Apple ! - Auteur Inconnu",
+      "Cookie : Anciennement petit gâteau sucré, qu'on acceptait avec plaisir. Aujourd'hui : petit fichier informatique drôlement salé, qu'il faut refuser avec véhémence. — Luc Fayard",
+      "Linux s'apprête à devenir grand mais, hey, qui suis-je pour le dire ? - Linus Torvald"
+    ]
+    let alea = aleaNumber(arrayCitations)
+    bodyMessageForBot(arrayCitations[alea], "botForCitations")
+    numberNotif.citation++
+    notifBot[4].textContent = numberNotif.citation
   }
 
   messageZone.scrollTop = messageZone.scrollHeight
