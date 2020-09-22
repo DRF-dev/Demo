@@ -46,7 +46,7 @@ An app which have a bot who can answers our questions.
     * When you type "date" on your message, the bot respond with the date
     * When you type "weather" on your message, the bot respond with the current meteo
     * When you type "dice" on your message, the bot respond with a random number between 1 and 6
-    * When you type "citatiop" on your message, the bot show a random quote
+    * When you type "citation" on your message, the bot show a random quote
     * When you type "map {name_of_city}" on your message, the bot show the Google Map of the city chosen
     * When you type "youtube {name_of_youtube's_search}" on your message, the bot show a search result on YouTube
     * When you type "tryMe" on your message, the bot respond with a nice surprise
