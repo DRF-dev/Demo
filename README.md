@@ -43,6 +43,9 @@ An app which have a bot who can answers our questions.
     * Add date and hour in time on the new message
     * When you type "hour" on your message, the bot respond with the hour
     * When you type "date" on your message, the bot respond with the date
+    * When you type "weather" on your message, the bot respond with the current meteo
+    * When you type "dice" on your message, the bot respond with a random number between 1 and 6
+
 
 ### Author
 [**FRANCISCO Dany**](https://github.com/DRF-dev)
