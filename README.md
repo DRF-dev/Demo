@@ -58,3 +58,5 @@ An app which have a bot who can answers our questions.
 [**LAMOURI Nizar**](https://github.com/Nizi95) \
 [**LINA Florian**](https://github.com/Jilow42)
 
+#### PS - commit and contributor issue
+Lamouri Nizar does not show in contributors but still had done some commit on the project.
